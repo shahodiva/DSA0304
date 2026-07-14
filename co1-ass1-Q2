@@ -1,0 +1,58 @@
+import re
+
+# Product List
+products = [
+    "Apple iPhone",
+    "Apple Watch",
+    "Samsung Galaxy",
+    "Samsung TV",
+    "Dell Laptop",
+    "HP Laptop",
+    "Lenovo Laptop",
+    "Wireless Mouse",
+    "Gaming Mouse",
+    "Bluetooth Speaker",
+    "Smart Watch",
+    "Phone Charger"
+]
+
+# Function to perform search
+def search_products(pattern, description, flags=0):
+    matches = [product for product in products if re.search(pattern, product, flags)]
+
+    print("\n", "="*40)
+    print(description)
+    print("="*40)
+
+    if matches:
+        for product in matches:
+            print(product)
+    else:
+        print("No matching products found.")
+
+    print("Total Matches :", len(matches))
+    return len(matches)
+
+# Exact Keyword Search
+exact = search_products(r"^Samsung Galaxy$", "1. Exact Keyword Search")
+
+# Prefix Search
+prefix = search_products(r"^Apple", "2. Prefix Search")
+
+# Suffix Search
+suffix = search_products(r"Laptop$", "3. Suffix Search")
+
+# Partial Keyword Search
+partial = search_products(r"Mouse", "4. Partial Keyword Search")
+
+# Case-Insensitive Search
+case = search_products(r"watch", "5. Case-Insensitive Search", re.IGNORECASE)
+
+# Search Report
+print("\n========== SEARCH REPORT ==========")
+print("Exact Keyword Matches      :", exact)
+print("Prefix Search Matches      :", prefix)
+print("Suffix Search Matches      :", suffix)
+print("Partial Keyword Matches    :", partial)
+print("Case-Insensitive Matches   :", case)
+
