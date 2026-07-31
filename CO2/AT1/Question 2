@@ -1,0 +1,57 @@
+from tabulate import tabulate
+
+words = ["unhappy", "happiness", "happily"]
+
+results = []
+
+for word in words:
+
+    prefix = "-"
+    suffix = "-"
+    root = word
+    mtype = "Derivational"
+
+    if word.startswith("un"):
+        prefix = "un"
+        root = word[2:]
+
+    elif word.endswith("ness"):
+        suffix = "ness"
+        root = word[:-4]
+
+    elif word.endswith("ly"):
+        suffix = "ly"
+        root = word[:-2]
+
+    # Normalize common spelling changes
+    if root == "happi":
+        root = "happy"
+
+    if prefix != "-":
+        breakdown = prefix + " + " + root
+    elif suffix != "-":
+        breakdown = root + " + " + suffix
+    else:
+        breakdown = root
+
+    results.append([
+        word,
+        prefix,
+        root,
+        suffix,
+        mtype,
+        breakdown,
+        root
+    ])
+
+print(tabulate(results,
+headers=[
+"Word",
+"Prefix",
+"Root",
+"Suffix",
+"Type",
+"Breakdown",
+"Normalized Root"
+],
+tablefmt="grid"))
