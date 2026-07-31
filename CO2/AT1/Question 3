@@ -1,0 +1,42 @@
+from tabulate import tabulate
+
+words = ["played", "player", "playing"]
+
+results = []
+
+for word in words:
+
+    stem = word
+    affix = "-"
+    ttype = "-"
+
+    if word.endswith("ing"):
+        stem = word[:-3]
+        affix = "ing"
+        ttype = "Inflectional"
+
+    elif word.endswith("ed"):
+        stem = word[:-2]
+        affix = "ed"
+        ttype = "Inflectional"
+
+    elif word.endswith("er"):
+        stem = word[:-2]
+        affix = "er"
+        ttype = "Derivational"
+
+    results.append([
+        word,
+        stem,
+        affix,
+        ttype,
+        stem
+    ])
+
+print(tabulate(results,
+headers=["Original Word",
+         "Stem",
+         "Removed Affix",
+         "Transformation Type",
+         "Normalized Form"],
+tablefmt="grid"))
