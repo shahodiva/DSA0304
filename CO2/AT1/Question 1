@@ -1,0 +1,52 @@
+from tabulate import tabulate
+
+words = ["connected", "connecting", "connection"]
+
+results = []
+
+for word in words:
+
+    if word.endswith("ed"):
+        root = word[:-2]
+        suffix = "ed"
+        mtype = "Inflectional"
+
+    elif word.endswith("ing"):
+        root = word[:-3]
+        suffix = "ing"
+        mtype = "Inflectional"
+
+    elif word.endswith("ion"):
+        root = word[:-3]
+        suffix = "ion"
+        mtype = "Derivational"
+
+    else:
+        root = word
+        suffix = "-"
+        mtype = "-"
+
+    if root.endswith("connect"):
+        normalized = "connect"
+    else:
+        normalized = root
+
+    results.append([
+        word,
+        root,
+        suffix,
+        mtype,
+        root + " + " + suffix,
+        normalized
+    ])
+
+print(tabulate(results,
+headers=[
+"Word",
+"Root",
+"Suffix",
+"Type",
+"Parsed Structure",
+"Normalized"
+],
+tablefmt="grid"))
