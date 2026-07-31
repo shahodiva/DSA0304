@@ -1,0 +1,46 @@
+from tabulate import tabulate
+
+words = ["writes", "writing", "written"]
+
+results = []
+
+for word in words:
+
+    if word == "writes":
+
+        path = "q0 → q1 → qf"
+        root = "write"
+        breakdown = "write + s"
+        pattern = "Regular Inflection"
+
+    elif word == "writing":
+
+        path = "q0 → q2 → qf"
+        root = "write"
+        breakdown = "write + ing"
+        pattern = "Regular Inflection"
+
+    elif word == "written":
+
+        path = "q0 → q3 → qf"
+        root = "write"
+        breakdown = "write → written"
+        pattern = "Irregular Inflection"
+
+    results.append([
+        word,
+        path,
+        breakdown,
+        root,
+        pattern,
+        root
+    ])
+
+print(tabulate(results,
+headers=["Word",
+         "State Transition",
+         "Morphological Breakdown",
+         "Root",
+         "Classification",
+         "Normalized"],
+tablefmt="grid"))
