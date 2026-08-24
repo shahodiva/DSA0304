@@ -1,0 +1,14 @@
+import random
+
+word_tags = {
+    "The": ["DT"],
+    "boy": ["NN"],
+    "plays": ["VBZ"],
+    "football": ["NN"]
+}
+
+sentence = "The boy plays football".split()
+
+for word in sentence:
+    tag = random.choice(word_tags.get(word, ["NN"]))
+    print(word, "/", tag)
