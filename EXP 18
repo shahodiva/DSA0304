@@ -1,0 +1,9 @@
+import re
+
+expression = "Human(John) AND Smart(John)"
+
+predicates = re.findall(r'\w+\(\w+\)', expression)
+operator = "AND" if "AND" in expression else "OR"
+
+print("Operator:", operator)
+print("Predicates:", predicates)
