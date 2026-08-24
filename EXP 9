@@ -1,0 +1,16 @@
+import re
+
+sentence = "The boy is running fast"
+words = sentence.split()
+
+for word in words:
+    if word.lower() in ["the", "a", "an"]:
+        tag = "DT"
+    elif re.match(r".*ing$", word):
+        tag = "VBG"
+    elif re.match(r".*ly$", word):
+        tag = "RB"
+    else:
+        tag = "NN"
+
+    print(word, "/", tag)
