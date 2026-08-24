@@ -1,0 +1,7 @@
+from nltk.corpus import wordnet as wn
+
+word = "car"
+
+for syn in wn.synsets(word):
+    print(syn.name())
+    print(syn.definition())
