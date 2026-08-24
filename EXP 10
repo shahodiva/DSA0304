@@ -1,0 +1,20 @@
+sentence = [
+    ("The", "NN"),
+    ("boy", "NN"),
+    ("is", "NN"),
+    ("running", "NN")
+]
+
+# Transformation rules
+for i, (word, tag) in enumerate(sentence):
+
+    if word.lower() in ["the", "a", "an"]:
+        sentence[i] = (word, "DT")
+
+    elif word.lower() in ["is", "am", "are", "was", "were"]:
+        sentence[i] = (word, "VB")
+
+    elif word.endswith("ing"):
+        sentence[i] = (word, "VBG")
+
+print(sentence)
