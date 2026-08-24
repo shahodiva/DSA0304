@@ -1,0 +1,20 @@
+from collections import defaultdict
+import random
+
+text = "I like Python and I like machine learning"
+words = text.split()
+
+bigrams = defaultdict(list)
+
+for i in range(len(words) - 1):
+    bigrams[words[i]].append(words[i + 1])
+
+word = words[0]
+result = [word]
+
+for _ in range(8):
+    if word in bigrams:
+        word = random.choice(bigrams[word])
+        result.append(word)
+
+print("Generated Text:", " ".join(result))
